@@ -18,9 +18,9 @@
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
@@ -30,9 +30,10 @@
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="http"/>
                 <data android:scheme="https" />
-                <data android:host="advy.fun11.in"/>
-                <data android:pathPrefix="/j3rrrf" />
+                <data android:host="advy.me"/>
+                <data android:pathPrefix="/sl760_" />
             </intent-filter>
+
         </activity>
     </application>
 

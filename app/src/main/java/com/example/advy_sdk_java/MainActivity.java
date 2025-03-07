@@ -1,17 +1,12 @@
 package com.example.advy_sdk_java;
 
-import static com.google.android.gms.common.util.CollectionUtils.mapOf;
-
 import android.content.Intent;
 import android.os.Bundle;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 import com.example.advy_sdk_java.databinding.ActivityMainBinding;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,28 +19,33 @@ private ActivityMainBinding binding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
         // Create an Intent object
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = getIntent();
 
-        Advy.init("0inrdbhpu399bs6r", "3rviwkqw5db-zj8q0ph0", this, intent);
+        Advy.init("x6eb6oo1ykqvd4vc", "teufhx6nodzd13l2sikr", this, intent);
+        System.out.println(intent.getData());
 
-        Map<String, Object> properties = new HashMap<>();
-        properties.put("amount", 100);
-        Advy.event("deposit", properties);
 
-     binding = ActivityMainBinding.inflate(getLayoutInflater());
-     setContentView(binding.getRoot());
+        Advy.setId("123456");
+        System.out.println("isInitialized" + Advy.isInitialized());
 
-        BottomNavigationView navView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(binding.navView, navController);
+
+
+        Button myButton = findViewById(R.id.my_button);
+
+        myButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("Deep Link Data" + Advy.getDeepLinkData());
+                System.out.println("kldkldj");
+                Map<String, Object> properties = new HashMap<>();
+                properties.put("amount", 100);
+                Advy.event("deposit", properties);
+                Toast.makeText(MainActivity.this, "Button Clicked!", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 }
