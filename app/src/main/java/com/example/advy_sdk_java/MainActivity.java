@@ -29,10 +29,10 @@ private ActivityMainBinding binding;
         Intent intent = getIntent();
 
         // Production
-//        Advy.init("x6eb6oo1ykqvd4vc", "teufhx6nodzd13l2sikr", this, intent);
+        Advy.init("x6eb6oo1ykqvd4vc", "teufhx6nodzd13l2sikr", this, intent, this);
 
         // Development
-        Advy.init("zvv0unhlqypxfo37", "r8_0rae4g0ccg7kuvayr", this, intent);
+//        Advy.init("zvv0unhlqypxfo37", "r8_0rae4g0ccg7kuvayr", this, intent);
 //        System.out.println(intent.getData());
 
 
@@ -60,5 +60,10 @@ private ActivityMainBinding binding;
     public void onDeepLinkDataInitialized(JSONObject jsonObject) {
         System.out.println("onDeepLinkDataInitialized");
         System.out.println(jsonObject);
+    }
+
+    @Override
+    public void onInitialized(boolean b) {
+
     }
 }
