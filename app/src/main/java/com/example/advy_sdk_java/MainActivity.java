@@ -7,29 +7,38 @@ import android.widget.Button;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.advy_sdk_java.databinding.ActivityMainBinding;
+
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.Map;
 
 import me.advy.sdk.Advy;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Advy.Callback {
 
 private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        System.out.println("intent.getData()");
         setContentView(R.layout.activity_main);
 
         // Create an Intent object
         Intent intent = getIntent();
 
-        Advy.init("x6eb6oo1ykqvd4vc", "teufhx6nodzd13l2sikr", this, intent);
-        System.out.println(intent.getData());
+        // Production
+//        Advy.init("x6eb6oo1ykqvd4vc", "teufhx6nodzd13l2sikr", this, intent);
+
+        // Development
+        Advy.init("zvv0unhlqypxfo37", "r8_0rae4g0ccg7kuvayr", this, intent);
+//        System.out.println(intent.getData());
 
 
-        Advy.setId("123456");
+//        Advy.setId("123456");
         System.out.println("isInitialized" + Advy.isInitialized());
+        Advy.getDeepLinkData(this);
 
 
 
@@ -38,7 +47,6 @@ private ActivityMainBinding binding;
         myButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("Deep Link Data" + Advy.getDeepLinkData());
                 System.out.println("kldkldj");
                 Map<String, Object> properties = new HashMap<>();
                 properties.put("amount", 100);
@@ -48,4 +56,9 @@ private ActivityMainBinding binding;
         });
     }
 
+    @Override
+    public void onDeepLinkDataInitialized(JSONObject jsonObject) {
+        System.out.println("onDeepLinkDataInitialized");
+        System.out.println(jsonObject);
+    }
 }

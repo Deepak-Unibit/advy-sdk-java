@@ -30,8 +30,8 @@
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="http"/>
                 <data android:scheme="https" />
-                <data android:host="advy.me"/>
-                <data android:pathPrefix="/sl760_" />
+                <data android:host="advy.fun11.in"/>
+                <data android:pathPrefix="/rct-24" />
             </intent-filter>
 
         </activity>
