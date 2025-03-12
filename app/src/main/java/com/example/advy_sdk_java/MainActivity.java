@@ -29,21 +29,20 @@ private ActivityMainBinding binding;
         Intent intent = getIntent();
 
         // Production
-        Advy.init("es7ot967el3lqoao", "ud63gc2r0sgp06yty-c6", this, intent, this);
+//        Advy.init("170xdo10xgzn7rqv", "9l9y5dj3u4rfln_ynkll", this, intent, this);
 
         // Development
-//        Advy.init("zvv0unhlqypxfo37", "r8_0rae4g0ccg7kuvayr", this, intent);
+        Advy.init("246a372iu0hk8fvy", "3w6k4c89y1_tk5bjrk9u", this, intent, this);
 //        System.out.println(intent.getData());
 
 
 //        Advy.setId("123456");
-        System.out.println("isInitialized" + Advy.isInitialized());
         Advy.getDeepLinkData(this);
 
 
 
         Button depositButton = findViewById(R.id.deposit_btn);
-        Button withdrawButton = findViewById(R.id.withdraw_btn);
+//        Button withdrawButton = findViewById(R.id.withdraw_btn);
 
         depositButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,24 +51,24 @@ private ActivityMainBinding binding;
                 properties.put("amount", 100);
                 properties.put("type", "deposit");
                 System.out.println(properties);
-                Advy.event("revenue", properties);
+                System.out.println(Advy.event("revenue", properties));
 
                 Toast.makeText(MainActivity.this, "Deposit Clicked!", Toast.LENGTH_SHORT).show();
             }
         });
 
-        withdrawButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Map<String, Object> properties = new HashMap<>();
-                properties.put("amount", 100);
-                properties.put("type", "withdraw");
-                System.out.println(properties);
-                Advy.event("revenue", properties);
-
-                Toast.makeText(MainActivity.this, "Withdraw Clicked!", Toast.LENGTH_SHORT).show();
-            }
-        });
+//        withdrawButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Map<String, Object> properties = new HashMap<>();
+//                properties.put("amount", 100);
+//                properties.put("type", "withdraw");
+//                System.out.println(properties);
+//                Advy.event("revenue", properties);
+//
+//                Toast.makeText(MainActivity.this, "Withdraw Clicked!", Toast.LENGTH_SHORT).show();
+//            }
+//        });
     }
 
     @Override
@@ -80,6 +79,6 @@ private ActivityMainBinding binding;
 
     @Override
     public void onInitialized(boolean b) {
-
+        System.out.println("Is Initialized: " + b);
     }
 }
