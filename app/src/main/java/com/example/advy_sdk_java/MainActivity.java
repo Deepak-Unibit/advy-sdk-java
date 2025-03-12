@@ -29,7 +29,7 @@ private ActivityMainBinding binding;
         Intent intent = getIntent();
 
         // Production
-        Advy.init("x6eb6oo1ykqvd4vc", "teufhx6nodzd13l2sikr", this, intent, this);
+        Advy.init("es7ot967el3lqoao", "ud63gc2r0sgp06yty-c6", this, intent, this);
 
         // Development
 //        Advy.init("zvv0unhlqypxfo37", "r8_0rae4g0ccg7kuvayr", this, intent);
@@ -42,16 +42,32 @@ private ActivityMainBinding binding;
 
 
 
-        Button myButton = findViewById(R.id.my_button);
+        Button depositButton = findViewById(R.id.deposit_btn);
+        Button withdrawButton = findViewById(R.id.withdraw_btn);
 
-        myButton.setOnClickListener(new View.OnClickListener() {
+        depositButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("kldkldj");
                 Map<String, Object> properties = new HashMap<>();
                 properties.put("amount", 100);
-                Advy.event("deposit", properties);
-                Toast.makeText(MainActivity.this, "Button Clicked!", Toast.LENGTH_SHORT).show();
+                properties.put("type", "deposit");
+                System.out.println(properties);
+                Advy.event("revenue", properties);
+
+                Toast.makeText(MainActivity.this, "Deposit Clicked!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        withdrawButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Map<String, Object> properties = new HashMap<>();
+                properties.put("amount", 100);
+                properties.put("type", "withdraw");
+                System.out.println(properties);
+                Advy.event("revenue", properties);
+
+                Toast.makeText(MainActivity.this, "Withdraw Clicked!", Toast.LENGTH_SHORT).show();
             }
         });
     }

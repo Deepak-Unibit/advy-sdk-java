@@ -46,7 +46,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-    implementation("com.github.advy-sdk:android:1.0.2")
+    implementation("com.github.bishalkuiry:advy-sdk-android-release:1.1.0")     // Development
+//    implementation("com.github.advy-sdk:android:1.0.2")      // Production
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("com.google.android.gms:play-services-ads-identifier:18.2.0")
     implementation("com.android.installreferrer:installreferrer:2.2")
